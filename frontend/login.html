@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Facebook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Login with Facebook</h2>
+        <p>Click the button below to login using Facebook:</p>
+
+        <!-- Facebook Login Button -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+        <button id="facebook-login-btn" style="display:none;">Login with Facebook</button>
+
+        <p>Don't have an account? <a href="signup.html">Create one here</a></p>
+    </div>
+
+    <script>
+        // Initialize the Facebook SDK
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '2454884014702331', // Replace with your Facebook App ID
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v15.0' // Facebook API version
+            });
+
+            FB.AppEvents.logPageView();
+
+            // Show the login button once the SDK is loaded
+            document.getElementById('facebook-login-btn').style.display = 'inline-block';
+        };
+
+        // Facebook login function
+        function loginWithFacebook() {
+            FB.login(function(response) {
+                if (response.status === 'connected') {
+                    // User successfully logged in, get the user details
+                    FB.api('/me', function(response) {
+                        alert('Hello, ' + response.name);
+                        // You can now use the user details to log them in on your server, or fetch more data
+                        // For example: send the access token to your backend for further processing
+                        const userData = {
+                            name: response.name,
+                            email: response.email,  // If the email permission was granted
+                            accessToken: response.accessToken
+                        };
+
+                        // Optionally, send user data to your backend
+                        fetch('http://localhost:5000/api/facebook-login', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(userData),
+                        }).then(response => response.json())
+                          .then(data => {
+                            if (data.success) {
+                                window.location.href = 'Index.html'; // Redirect to home page after successful login
+                            } else {
+                                alert(data.message);
+                            }
+                        });
+                    });
+                } else {
+                    alert('User login failed');
+                }
+            }, { scope: 'public_profile,email' }); // Add required permissions
+        }
+
+        // Attach the login function to the button click event
+        document.getElementById('facebook-login-btn').addEventListener('click', loginWithFacebook);
+    </script>
+</body>
+</html>

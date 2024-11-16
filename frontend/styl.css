@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #6f4f97;
+}
+
+main {
+    margin-bottom: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #6f4f97;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #6f4f97;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #5a3b82;
+}
+
+/* Flex container for the top section: Dominant Mood, Mood History, and Quotes */
+.top-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.dominant-mood, .mood-history, .quotes-section {
+    width: 32%;
+}
+
+/* Bottom section layout for Day Summary, Save Button, and Graph */
+.bottom-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.day-summary, .chart-container {
+    width: 48%; /* Equal width for both the day summary and the graph */
+}
+
+/* Styling for dominant mood, mood history, and quotes section */
+#dominantMoodDisplay, #moodHistoryDisplay, #quoteDisplay {
+    padding: 10px;
+    background-color: #eef2f7;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
