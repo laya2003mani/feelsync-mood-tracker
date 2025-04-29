@@ -26,4 +26,4 @@ Currently, this is a **frontend-only** project. Mood data is stored temporarily 
 - Export weekly mood reports  
 
 ## 🤍 Author
-Made with love by [Laya M, N Yuvasri](https://github.com/laya2003mani)
+Made with love by [Laya M And N Yuvasri]
